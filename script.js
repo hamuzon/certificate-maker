@@ -8,7 +8,6 @@ const dateNumeralStyle = document.getElementById('dateNumeralStyle');
 const orientation = document.getElementById('orientation');
 const paperOrientation = document.getElementById('paperOrientation');
 const borderStyle = document.getElementById('borderStyle');
-const templateBg = document.getElementById('templateBg');
 const showStamp = document.getElementById('showStamp');
 const stampType = document.getElementById('stampType');
 const paperSizeLabel = document.getElementById('paperSizeLabel');
@@ -53,7 +52,7 @@ function saveToStorage() {
     issuerName: issuerName.value, issuerTitle: issuerTitle.value, date: dateInput.value,
     dateNumeralStyle: dateNumeralStyle.value, orientation: orientation.value,
     paperOrientation: paperOrientation.value, borderStyle: borderStyle.value,
-    templateBg: templateBg.value, showStamp: showStamp.checked, stampType: stampType.value
+    showStamp: showStamp.checked, stampType: stampType.value
   };
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
 }
@@ -74,7 +73,6 @@ function applyStoredData(data) {
   if (data.orientation) orientation.value = data.orientation;
   if (data.paperOrientation) paperOrientation.value = data.paperOrientation;
   if (data.borderStyle) borderStyle.value = data.borderStyle;
-  if (data.templateBg) templateBg.value = data.templateBg;
   showStamp.checked = data.showStamp !== undefined ? data.showStamp : true;
   if (data.stampType) stampType.value = data.stampType;
   return true;
@@ -124,21 +122,22 @@ function updatePreview() {
   const msg = reason.value || '（メッセージ）';
   const issuer = issuerName.value || '（発行者）';
   const issuerT = issuerTitle.value || '（肩書き）';
-  certRecipient.textContent = name;
+  certRecipient.textContent = name;　
   certAwardTitle.textContent = title;
   certReason.textContent = msg;
   certIssuerName.textContent = issuer;
   certIssuerTitle.textContent = issuerT;
+
   vertRecipient.textContent = name;
   vertAwardTitle.textContent = title;
   vertReason.textContent = msg;
   vertIssuerName.textContent = issuer;
   vertIssuerTitle.textContent = issuerT;
+
   updateDateDisplay();
   updateBorderStyle();
   updateOrientation();
   updatePaperOrientation();
-  updateTemplateBg();
   updateStamp();
 }
 
@@ -160,13 +159,6 @@ function updatePaperOrientation() {
   const isLandscape = paperOrientation.value === 'landscape';
   certificate.classList.add(isLandscape ? 'paper-landscape' : 'paper-portrait');
   paperSizeLabel.textContent = isLandscape ? 'A4 横' : 'A4 縦';
-}
-
-function updateTemplateBg() {
-  const tc = Array.from(certificate.classList).filter(c => c.startsWith('tpl-'));
-  certificate.classList.remove(...tc);
-  const val = templateBg.value;
-  if (val && val !== 'none') certificate.classList.add('tpl-' + val);
 }
 
 function updateStamp() {
@@ -198,7 +190,6 @@ dateNumeralStyle.addEventListener('change', saveAndUpdate);
 orientation.addEventListener('change', saveAndUpdate);
 paperOrientation.addEventListener('change', saveAndUpdate);
 borderStyle.addEventListener('change', saveAndUpdate);
-templateBg.addEventListener('change', saveAndUpdate);
 showStamp.addEventListener('change', () => { updateStamp(); saveToStorage(); });
 stampType.addEventListener('change', () => { updateStamp(); saveToStorage(); });
 
@@ -213,34 +204,51 @@ printBtn.addEventListener('click', () => {
 });
 
 saveImageBtn.addEventListener('click', () => {
-  const original = document.getElementById('certificate');
-  const bgEl = document.getElementById('certBg');
-  const bgClasses = Array.from(bgEl.classList).filter(c => c.startsWith('tpl-'));
+  const isLandscape = paperOrientation.value === 'landscape';
+  const isVertical = orientation.value === 'vertical';
+  const width = isLandscape ? 1123 : 794;
+  const height = isLandscape ? 794 : 1123;
+
   const container = document.createElement('div');
-  container.style.cssText = 'position:fixed;left:-9999px;top:0;width:794px;height:1123px;background:#fff;display:flex;align-items:center;justify-content:center;padding:0;';
+  container.style.cssText = `position:fixed;left:-9999px;top:0;width:${width}px;height:${height}px;background:#fff;padding:0;`;
   document.body.appendChild(container);
-  const clone = original.cloneNode(true);
-  clone.style.cssText = 'width:100%;height:100%;max-width:100%;max-height:100%;aspect-ratio:auto;padding:15mm;margin:0;box-sizing:border-box;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;';
-  const borderClasses = Array.from(original.classList).filter(c => c.startsWith('border-'));
-  borderClasses.forEach(c => clone.classList.add(c));
-  bgClasses.forEach(c => clone.classList.add(c));
-  const cloneBg = clone.querySelector('#certBg');
-  bgClasses.forEach(c => cloneBg.classList.add(c));
+
+  const clone = certificate.cloneNode(true);
+  let cloneStyle = 'width:100%;height:100%;max-width:100%;max-height:100%;aspect-ratio:auto;padding:15mm;margin:0;box-sizing:border-box;overflow:hidden;display:flex;';
+  if (isVertical) {
+  }
+  clone.style.cssText = cloneStyle;
   container.appendChild(clone);
+  const innerClone = clone.querySelector('.cert-inner');
+  innerClone.style.flexDirection = isVertical ? 'row' : 'column';
+
   void clone.offsetHeight;
-  html2canvas(clone, { scale: 3, useCORS: true, backgroundColor: '#ffffff', logging: false, allowTaint: false, width: 794, height: 1123 })
+
+  html2canvas(clone, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+    width: width,
+    height: height,
+    windowWidth: width,
+    windowHeight: height
+  })
     .then(canvas => {
-      document.body.removeChild(container);
       const link = document.createElement('a');
       const now = new Date();
       const pad = (num) => String(num).padStart(2, '0');
       const Y = now.getFullYear(), M = pad(now.getMonth()+1), D = pad(now.getDate());
       const HH = pad(now.getHours()), mm = pad(now.getMinutes()), ss = pad(now.getSeconds());
-      const name = recipientName.value.trim() || '名称未設定';
-      link.download = `${name}-certificate-maker_${Y}_${M}_${D}_${HH}_${mm}_${ss}.png`;
+      const name = recipientName.value.trim() || '名称未設定'; // ファイル名の日付区切り文字を修正
+      link.download = `${name}-certificate-maker_${Y}${M}${D}_${HH}${mm}${ss}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
-    }).catch(() => { if (container.parentNode) document.body.removeChild(container); });
+    }).catch(err => {
+      console.error('画像の生成に失敗しました:', err);
+      alert('画像の生成に失敗しました。');
+    }).finally(() => {
+      if (container.parentNode) document.body.removeChild(container);
+    });
 });
 
 resetBtn.addEventListener('click', () => {
@@ -252,7 +260,6 @@ resetBtn.addEventListener('click', () => {
   borderStyle.value = 'classic';
   orientation.value = 'horizontal';
   paperOrientation.value = 'portrait';
-  templateBg.value = 'none';
   showStamp.checked = true;
   stampType.value = '㊞';
   dateNumeralStyle.value = 'kanji';
@@ -274,3 +281,36 @@ if (!dateInput.value) {
   dateInput.value = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 updatePreview();
+
+// --- Footer logic: year display & domain-based link ---
+(function initFooter() {
+  const baseYear = 2026;
+  const currentYear = new Date().getFullYear();
+  const yearDisplay = currentYear > baseYear ? `${baseYear}~${currentYear}` : `${baseYear}`;
+
+  document.querySelectorAll(".year").forEach(el => {
+    el.textContent = yearDisplay;
+  });
+
+  const host = location.hostname.toLowerCase();
+  const container = document.getElementById("footer-link-container");
+  if (!container) return;
+
+  let linkHref = "";
+  let linkText = "";
+
+  if (host.endsWith("hamusata.f5.si")) {
+    linkHref = "https://hamusata.f5.si";
+    linkText = "@hamusata";
+  } else if (host.endsWith("hamuzon.github.io")) {
+    linkHref = "https://github.com/Hamuzon";
+    linkText = "@hamuzon";
+  } else if (host.endsWith("hamuzon-jp.f5.si")) {
+    linkHref = "https://hamuzon-jp.f5.si";
+    linkText = "@hamuzon";
+  }
+
+  if (linkHref) {
+    container.innerHTML = ` <a href="${linkHref}" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+  }
+})();
