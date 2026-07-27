@@ -224,24 +224,21 @@ saveImageBtn.addEventListener('click', () => {
 
   void clone.offsetHeight;
 
-  html2canvas(clone, {
-    scale: 2,
-    useCORS: true,
-    backgroundColor: '#ffffff',
+  htmlToImage.toPng(clone, {
     width: width,
     height: height,
-    windowWidth: width,
-    windowHeight: height
+    pixelRatio: 2,
+    backgroundColor: '#ffffff'
   })
-    .then(canvas => {
+    .then(dataUrl => {
       const link = document.createElement('a');
       const now = new Date();
       const pad = (num) => String(num).padStart(2, '0');
       const Y = now.getFullYear(), M = pad(now.getMonth()+1), D = pad(now.getDate());
       const HH = pad(now.getHours()), mm = pad(now.getMinutes()), ss = pad(now.getSeconds());
-      const name = recipientName.value.trim() || '名称未設定'; // ファイル名の日付区切り文字を修正
+      const name = recipientName.value.trim() || '名称未設定';
       link.download = `${name}-certificate-maker_${Y}${M}${D}_${HH}${mm}${ss}.png`;
-      link.href = canvas.toDataURL('image/png');
+      link.href = dataUrl;
       link.click();
     }).catch(err => {
       console.error('画像の生成に失敗しました:', err);
