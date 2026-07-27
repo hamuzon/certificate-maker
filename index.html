@@ -13,17 +13,32 @@
   <div class="container">
     <header>
       <h1>表彰状メーカー</h1>
-      <p>かんたんに表彰状を作って印刷・保存</p>
     </header>
 
     <div class="main-layout">
-      <!-- 入力フォーム -->
       <div class="form-section">
         <h2>内容を入力</h2>
         <form id="certForm">
           <div class="form-group">
             <label for="recipientName">お名前</label>
-            <input type="text" id="recipientName" value="山田 太郎" placeholder="例：山田 太郎">
+            <input type="text" id="recipientName" placeholder="例：山田 太郎" list="nameSuggestions">
+            <datalist id="nameSuggestions">
+              <option value="鈴木 一郎">
+              <option value="佐藤 花子">
+              <option value="高橋 健太">
+              <option value="田中 美咲">
+              <option value="渡辺 陽子">
+              <option value="山田 太郎">
+              <option value="中村 さくら">
+              <option value="小林 直樹">
+              <option value="加藤 あゆみ">
+              <option value="吉田 拓也">
+              <option value="松本 美紀">
+              <option value="井上 大輔">
+              <option value="木村 夏美">
+              <option value="林 誠一">
+              <option value="清水 栞">
+            </datalist>
           </div>
 
           <div class="form-group">
@@ -71,31 +86,31 @@
           </div>
 
           <div class="form-group">
-            <label>📋 テンプレート</label>
+            <label>テンプレート</label>
             <div class="template-sets" id="templateSets">
-              <div class="tpl-group-label">🏢 ビジネス</div>
-              <span class="tpl-set" data-award="優秀社員賞" data-msg="年間を通じて顕著な業績を挙げ会社の発展に多大な貢献をされました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">優秀社員</span>
-              <span class="tpl-set" data-award="永年勤続表彰" data-msg="多年にわたり職務に精励し当社の発展に大きく貢献されました よってその功績をたたえここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">永年勤続</span>
-              <span class="tpl-set" data-award="皆勤賞" data-msg="あなたは当年度において一日も休むことなく業務に精励されました よってその努力をたたえここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="人事部長">皆勤</span>
-              <span class="tpl-set" data-award="努力賞" data-msg="たゆまぬ努力と向上心をもって業務に取り組み他の模範となる成果を挙げられました よってその努力を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">努力賞</span>
-              <span class="tpl-set" data-award="リーダーシップ賞" data-msg="卓越したリーダーシップを発揮しチームを牽引して目標達成に大きく貢献されました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">リーダー</span>
-              <span class="tpl-set" data-award="安全運転賞" data-msg="日頃から安全運転を心がけ無事故無違反を達成し他の模範となりました よってこれを賞しここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="安全衛生委員長">安全運転</span>
-              <span class="tpl-set" data-award="感謝状" data-msg="あなたは日頃の献身的な協力をもって当社の発展に大きく貢献されました そのご厚情に対し深く感謝の意を表します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">感謝状</span>
-              <span class="tpl-set" data-award="年間MVP" data-msg="年間を通じて最も顕著な成果を上げ会社の成長に大きく寄与されました よってその栄誉を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">MVP</span>
-              <span class="tpl-set" data-award="業務改善賞" data-msg="業務プロセスの改善に尽力し効率化と品質向上に大きく貢献されました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">業務改善</span>
-              <span class="tpl-set" data-award="お客様満足賞" data-msg="顧客対応において卓越したサービスを提供しお客様から高い評価を得られました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">顧客満足</span>
-              <span class="tpl-set" data-award="新人賞" data-msg="新人ながら常に意欲的に業務に取り組み著しい成長を見せました よってその前途を祝してここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">新人賞</span>
-              <span class="tpl-set" data-award="チームワーク賞" data-msg="優れたチームワークを発揮し職場の活性化と目標達成に大きく貢献しました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">チーム</span>
+              <h3 class="tpl-group-label">ビジネス</h3>
+              <button type="button" class="tpl-set" data-award="優秀社員賞" data-msg="年間を通じて顕著な業績を挙げ会社の発展に多大な貢献をされました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">優秀社員</button>
+              <button type="button" class="tpl-set" data-award="永年勤続表彰" data-msg="多年にわたり職務に精励し当社の発展に大きく貢献されました よってその功績をたたえここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">永年勤続</button>
+              <button type="button" class="tpl-set" data-award="皆勤賞" data-msg="あなたは当年度において一日も休むことなく業務に精励されました よってその努力をたたえここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="人事部長">皆勤</button>
+              <button type="button" class="tpl-set" data-award="努力賞" data-msg="たゆまぬ努力と向上心をもって業務に取り組み他の模範となる成果を挙げられました よってその努力を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">努力賞</button>
+              <button type="button" class="tpl-set" data-award="リーダーシップ賞" data-msg="卓越したリーダーシップを発揮しチームを牽引して目標達成に大きく貢献されました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">リーダー</button>
+              <button type="button" class="tpl-set" data-award="安全運転賞" data-msg="日頃から安全運転を心がけ無事故無違反を達成し他の模範となりました よってこれを賞しここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="安全衛生委員長">安全運転</button>
+              <button type="button" class="tpl-set" data-award="感謝状" data-msg="あなたは日頃の献身的な協力をもって当社の発展に大きく貢献されました そのご厚情に対し深く感謝の意を表します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">感謝状</button>
+              <button type="button" class="tpl-set" data-award="年間MVP" data-msg="年間を通じて最も顕著な成果を上げ会社の成長に大きく寄与されました よってその栄誉を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">MVP</button>
+              <button type="button" class="tpl-set" data-award="業務改善賞" data-msg="業務プロセスの改善に尽力し効率化と品質向上に大きく貢献されました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">業務改善</button>
+              <button type="button" class="tpl-set" data-award="お客様満足賞" data-msg="顧客対応において卓越したサービスを提供しお客様から高い評価を得られました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">顧客満足</button>
+              <button type="button" class="tpl-set" data-award="新人賞" data-msg="新人ながら常に意欲的に業務に取り組み著しい成長を見せました よってその前途を祝してここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">新人賞</button>
+              <button type="button" class="tpl-set" data-award="チームワーク賞" data-msg="優れたチームワークを発揮し職場の活性化と目標達成に大きく貢献しました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">チーム</button>
 
-              <div class="tpl-group-label">🌸 子ども・学校</div>
-              <span class="tpl-set tpl-set-child" data-award="がんばり賞" data-msg="いつも明るく元気に頑張りました その姿はみんなのお手本です これからも応援しています" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">がんばり</span>
-              <span class="tpl-set tpl-set-child" data-award="よくできました賞" data-msg="最後まであきらめずに取り組みすばらしい成果を出しました その努力をたたえこの賞を贈ります" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">よくできた</span>
-              <span class="tpl-set tpl-set-child" data-award="お手伝い名人賞" data-msg="いつも進んでお手伝いをしてくれてありがとう みんながとても助かりました よってここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">お手伝い</span>
-              <span class="tpl-set tpl-set-child" data-award="運動会 一等賞" data-msg="運動会において最後まで力を出しきりみごとな成績をおさめました その栄誉をたたえここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">運動会</span>
-              <span class="tpl-set tpl-set-child" data-award="なかよし賞" data-msg="いつもお友だちにやさしくみんなと仲良くすることができました その優しい心をたたえこの賞を贈ります" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">なかよし</span>
-              <span class="tpl-set tpl-set-child" data-award="読書賞" data-msg="あなたはたくさんの本を読み豊かな知識と心を育みました よってその努力をたたえここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">読書</span>
-              <span class="tpl-set tpl-set-child" data-award="あいさつ名人賞" data-msg="いつも元気なあいさつでみんなを明るい気持ちにしてくれました その素晴らしい姿勢をたたえここに賞します" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">あいさつ</span>
-              <span class="tpl-set tpl-set-child" data-award="そうじ名人賞" data-msg="いつも学校をすみずみまできれいにし みんなが気持ちよく過ごせる環境を作ってくれました よってここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">そうじ</span>
+              <h3 class="tpl-group-label">子ども・学校</h3>
+              <button type="button" class="tpl-set tpl-set-child" data-award="がんばり賞" data-msg="いつも明るく元気に頑張りました その姿はみんなのお手本です これからも応援しています" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">がんばり</button>
+              <button type="button" class="tpl-set tpl-set-child" data-award="よくできました賞" data-msg="最後まであきらめずに取り組みすばらしい成果を出しました その努力をたたえこの賞を贈ります" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">よくできた</button>
+              <button type="button" class="tpl-set tpl-set-child" data-award="お手伝い名人賞" data-msg="いつも進んでお手伝いをしてくれてありがとう みんながとても助かりました よってここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">お手伝い</button>
+              <button type="button" class="tpl-set tpl-set-child" data-award="運動会 一等賞" data-msg="運動会において最後まで力を出しきりみごとな成績をおさめました その栄誉をたたえここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">運動会</button>
+              <button type="button" class="tpl-set tpl-set-child" data-award="なかよし賞" data-msg="いつもお友だちにやさしくみんなと仲良くすることができました その優しい心をたたえこの賞を贈ります" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">なかよし</button>
+              <button type="button" class="tpl-set tpl-set-child" data-award="読書賞" data-msg="あなたはたくさんの本を読み豊かな知識と心を育みました よってその努力をたたえここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">読書</button>
+              <button type="button" class="tpl-set tpl-set-child" data-award="あいさつ名人賞" data-msg="いつも元気なあいさつでみんなを明るい気持ちにしてくれました その素晴らしい姿勢をたたえここに賞します" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">あいさつ</button>
+              <button type="button" class="tpl-set tpl-set-child" data-award="そうじ名人賞" data-msg="いつも学校をすみずみまできれいにし みんなが気持ちよく過ごせる環境を作ってくれました よってここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">そうじ</button>
             </div>
           </div>
 
@@ -113,19 +128,36 @@
             <label for="date">日付</label>
             <input type="date" id="date">
           </div>
+          <div class="form-group" id="dateNumeralGroup">
+            <label for="dateNumeralStyle">日付の数字表記（縦書き）</label>
+            <select id="dateNumeralStyle">
+              <option value="kanji">漢数字（二〇二六年七月二七日）</option>
+              <option value="roman">ローマ数字（MMXXVI年VII月XXVII日）</option>
+              <option value="arabic">アラビア数字（2026年7月27日）</option>
+            </select>
+          </div>
 
           <fieldset class="form-fieldset">
             <legend>デザイン</legend>
             <div class="form-row">
               <div class="form-group">
-                <label for="orientation">📄 向き</label>
+                <label for="orientation">文字の向き</label>
                 <select id="orientation">
                   <option value="horizontal">横書き</option>
                   <option value="vertical">縦書き</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="borderStyle">🎨 枠</label>
+                <label for="paperOrientation">用紙の向き</label>
+                <select id="paperOrientation">
+                  <option value="portrait">縦（A4）</option>
+                  <option value="landscape">横（A4）</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="borderStyle">枠</label>
                 <select id="borderStyle">
                   <option value="classic">クラシック</option>
                   <option value="golden">ゴールド</option>
@@ -138,60 +170,60 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="templateBg">🖼️ テンプレート</label>
+              <label for="templateBg">背景</label>
               <select id="templateBg">
                 <option value="none">なし（枠のみ）</option>
-                <option value="sakura">🌸 さくら（春・入園・入学）</option>
-                <option value="sports">🏅 スポーツ（運動会・体育）</option>
-                <option value="star">⭐ スター（輝く才能）</option>
-                <option value="rainbow">🌈 レインボー（子ども向け）</option>
-                <option value="flower">🌻 ひまわり（夏・元気）</option>
-                <option value="business">💼 ビジネス（会社・シンプル）</option>
-                <option value="formal">📜 フォーマル（公式・厳格）</option>
-                <option value="kids">🧸 キッズ（かわいい）</option>
-                <option value="gold">👑 ゴールド（豪華）</option>
+                <option value="sakura">さくら</option>
+                <option value="sports">スポーツ</option>
+                <option value="star">スター</option>
+                <option value="rainbow">レインボー</option>
+                <option value="flower">ひまわり</option>
+                <option value="business">ビジネス</option>
+                <option value="formal">フォーマル</option>
+                <option value="kids">キッズ</option>
+                <option value="gold">ゴールド</option>
               </select>
             </div>
-            <div class="form-group stamp-control">
-              <label>
-                <input type="checkbox" id="showStamp" checked>
-                <span>印鑑を表示する</span>
-              </label>
-              <div class="stamp-selector">
-                <label for="stampType" class="sr-only">印鑑の種類</label>
-                <select id="stampType" title="印鑑の種類を選択">
-                  <option value="㊞">㊞ 実印</option>
-                  <option value="㊧">㊧ 認印</option>
-                  <option value="★">★ スター</option>
-                  <option value="◎">◎ 二重丸</option>
-                  <option value="❤">❤ ハート</option>
-                  <option value="♪">♪ 音符</option>
-                  <option value="🐾">🐾 どうぶつ足あと</option>
-                  <option value="⭐">⭐ キラキラ</option>
-                </select>
+            <div class="form-group">
+              <div class="stamp-control">
+                <label class="stamp-toggle">
+                  <input type="checkbox" id="showStamp" checked>
+                  <span>印鑑を表示する</span>
+                </label>
+                <div class="stamp-selector">
+                  <label for="stampType" class="sr-only">印鑑の種類</label>
+                  <select id="stampType" title="印鑑の種類を選択">
+                    <option value="㊞">実印 (㊞)</option>
+                    <option value="㊧">認印 (㊧)</option>
+                    <option value="★">スター (★)</option>
+                    <option value="◎">二重丸 (◎)</option>
+                    <option value="❤">ハート (❤)</option>
+                    <option value="♪">音符 (♪)</option>
+                    <option value="🐾">足あと (🐾)</option>
+                    <option value="⭐">キラキラ (⭐)</option>
+                  </select>
+                </div>
               </div>
             </div>
           </fieldset>
 
           <div class="form-actions">
-            <button type="button" id="printBtn" class="btn btn-primary">🖨️ 印刷</button>
+            <button type="button" id="saveImageBtn" class="btn btn-primary">画像として保存</button>
+            <button type="button" id="printBtn" class="btn btn-primary">印刷</button>
             <button type="button" id="resetBtn" class="btn btn-secondary">リセット</button>
           </div>
         </form>
       </div>
 
-      <!-- プレビュー -->
       <div class="preview-section">
         <div class="preview-toolbar">
           <h2>プレビュー</h2>
-          <span class="paper-size-label" id="paperSizeLabel">A4 縦</span>
         </div>
         <div class="certificate-wrapper" id="certificateWrapper">
           <div class="certificate" id="certificate">
             <div class="cert-bg" id="certBg"></div>
             <div class="cert-border" id="certBorder">
               <div class="cert-inner" id="certInner">
-                <!-- 横書き -->
                 <div class="layout-horizontal" id="layoutHorizontal">
                   <div class="cert-title">表彰状</div>
                   <div class="cert-recipient" id="certRecipient">山田 太郎</div>
@@ -207,7 +239,6 @@
                   </div>
                 </div>
 
-                <!-- 縦書き -->
                 <div class="layout-vertical" id="layoutVertical">
                   <div class="vert-title">表彰状</div>
                   <div class="vert-body">
@@ -234,6 +265,7 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
