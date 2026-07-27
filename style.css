@@ -1,0 +1,929 @@
+/* ===== リセット & ベース ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Yu Gothic", "游ゴシック", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Meiryo", sans-serif;
+  background: #fef9ef;
+  min-height: 100vh;
+  padding: 16px;
+  color: #4a3728;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== ヘッダー ===== */
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #d4a373;
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+
+header p {
+  color: #a68a6e;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* ===== メインレイアウト ===== */
+.main-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ===== フォームセクション ===== */
+.form-section {
+  background: #fffaf5;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 16px rgba(180, 130, 80, 0.1);
+  border: 1px solid #f0e0d0;
+}
+
+.form-section h2 {
+  font-size: 1rem;
+  color: #b88a6a;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f5e8dc;
+  letter-spacing: 2px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #8b6f50;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1.5px solid #e8d5c0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fffdfa;
+  color: #4a3728;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #d4a373;
+  box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.15);
+  background: #fff;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+/* ===== テンプレートⅡボタン ===== */
+.template-sets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.tpl-group-label {
+  width: 100%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8b6f50;
+  padding: 4px 0 2px;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.tpl-group-label:first-child {
+  margin-top: 0;
+}
+
+.tpl-set {
+  display: inline-block;
+  padding: 5px 12px;
+  background: #f5ede4;
+  border: 1px solid #e8d5c0;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: #8b6f50;
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.tpl-set:hover {
+  background: #d4a373;
+  color: #fff;
+  border-color: #d4a373;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(180, 130, 80, 0.25);
+}
+
+.tpl-set:active {
+  transform: translateY(0);
+}
+
+.tpl-set-child {
+  background: #fff0f5;
+  border-color: #f5c0cc;
+  color: #b06070;
+}
+
+.tpl-set-child:hover {
+  background: #f0a0b0;
+  color: #fff;
+  border-color: #f0a0b0;
+}
+
+/* ===== 余白ラジオボタン ===== */
+.margin-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.margin-option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #8b6f50;
+  padding: 4px 10px;
+  border: 1.5px solid #e8d5c0;
+  border-radius: 8px;
+  background: #fffdfa;
+  transition: all 0.15s;
+}
+
+.margin-option:hover {
+  border-color: #d4a373;
+  background: #f5ede4;
+}
+
+.margin-option:has(input:checked) {
+  border-color: #d4a373;
+  background: #d4a373;
+  color: #fff;
+}
+
+.margin-radio {
+  accent-color: #d4a373;
+  width: 14px;
+  height: 14px;
+}
+
+/* ===== フィールドセット ===== */
+.form-fieldset {
+  border: 1.5px solid #f0e0d0;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.form-fieldset legend {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #b88a6a;
+  padding: 0 8px;
+  letter-spacing: 1px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* ===== 印鑑コントロール ===== */
+.stamp-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.stamp-control label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #8b6f50;
+}
+
+.stamp-selector {
+  margin-left: auto;
+}
+
+.stamp-selector select {
+  padding: 4px 8px;
+  border: 1.5px solid #e8d5c0;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  background: #fffdfa;
+  color: #4a3728;
+  cursor: pointer;
+}
+
+.stamp-selector select:focus {
+  outline: none;
+  border-color: #d4a373;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.stamp-control input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #c0392b;
+  cursor: pointer;
+}
+
+.stamp-preview {
+  font-size: 1.6rem;
+  color: #c0392b;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.stamp-preview.hidden {
+  opacity: 0.1;
+}
+
+/* ===== ボタン ===== */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn {
+  flex: 1;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(180, 130, 80, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: #d4a373;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #c4925e;
+}
+
+.btn-secondary {
+  background: #f0e0d0;
+  color: #8b6f50;
+}
+
+.btn-secondary:hover {
+  background: #e8d0b8;
+}
+
+/* ===== プレビューセクション ===== */
+.preview-section {
+  background: #fffaf5;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 16px rgba(180, 130, 80, 0.1);
+  border: 1px solid #f0e0d0;
+}
+
+.preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f5e8dc;
+}
+
+.preview-toolbar h2 {
+  font-size: 1rem;
+  color: #b88a6a;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.paper-size-label {
+  font-size: 0.8rem;
+  color: #8b6f50;
+  background: #f5ede4;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
+.certificate-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 480px;
+}
+
+/* ===== 表彰状本体 ===== */
+.certificate {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1.414;
+  padding: 16px;
+  position: relative;
+}
+
+.cert-bg {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  z-index: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.cert-border {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.cert-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== 枠スタイル ===== */
+
+/* クラシック */
+.border-classic .cert-border {
+  border: 4px double #b88a6a;
+  background: rgba(254, 249, 240, 0.95);
+}
+.border-classic .cert-inner {
+  border: 2px solid #b88a6a;
+}
+
+/* ゴールド */
+.border-golden .cert-border {
+  border: 5px solid #c9a84c;
+  background: linear-gradient(135deg, rgba(255,248,231,0.95) 0%, rgba(245,230,200,0.95) 100%);
+  box-shadow: inset 0 0 20px rgba(201,168,76,0.15);
+}
+.border-golden .cert-inner {
+  border: 2px solid #dbb42c;
+}
+
+/* モダン */
+.border-modern .cert-border {
+  border: 3px solid #5a7a8a;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 0 0 5px #e8f0f2, 0 0 0 7px #b8ccd4;
+}
+.border-modern .cert-inner {
+  border: none;
+}
+
+/* エレガント */
+.border-elegant .cert-border {
+  border: 2px solid #b28aae;
+  background: linear-gradient(135deg, rgba(253,252,251,0.95) 0%, rgba(237,225,245,0.95) 100%);
+  box-shadow: 0 0 24px rgba(178,138,174,0.12);
+}
+.border-elegant .cert-inner {
+  border: 1px dashed #b28aae;
+}
+
+/* フォーマル */
+.border-formal .cert-border {
+  border: 3px solid #2c3e50;
+  background: rgba(248, 249, 250, 0.97);
+  box-shadow: inset 0 0 30px rgba(44,62,80,0.05);
+}
+.border-formal .cert-inner {
+  border: 1px solid #95a5a6;
+}
+
+/* キュート */
+.border-cute .cert-border {
+  border: 4px dotted #f0a0b0;
+  background: rgba(255,245,247,0.95);
+  border-radius: 20px;
+}
+.border-cute .cert-inner {
+  border: 2px solid #f5c0cc;
+  border-radius: 12px;
+}
+
+/* ネイチャー */
+.border-nature .cert-border {
+  border: 4px solid #7aad6a;
+  background: rgba(245,255,240,0.95);
+  box-shadow: inset 0 0 20px rgba(122,173,106,0.1);
+}
+.border-nature .cert-inner {
+  border: 2px solid #9ac88a;
+}
+
+/* ===== テンプレート背景（CSS描画） ===== */
+
+/* さくら */
+.tpl-sakura .cert-bg {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,182,193,0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,182,193,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 50% 70%, rgba(255,200,180,0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #fff5f7 0%, #ffe8ec 50%, #fff0f2 100%);
+}
+
+/* スポーツ */
+.tpl-sports .cert-bg {
+  background:
+    repeating-linear-gradient(45deg, rgba(0,100,200,0.04) 0px, rgba(0,100,200,0.04) 20px, transparent 20px, transparent 40px),
+    repeating-linear-gradient(-45deg, rgba(0,100,200,0.04) 0px, rgba(0,100,200,0.04) 20px, transparent 20px, transparent 40px),
+    linear-gradient(135deg, #e8f4ff 0%, #d0e8ff 100%);
+}
+
+/* スター */
+.tpl-star .cert-bg {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255,215,0,0.2) 0%, transparent 30%),
+    radial-gradient(circle at 85% 25%, rgba(255,215,0,0.15) 0%, transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(255,215,0,0.1) 0%, transparent 30%),
+    linear-gradient(135deg, #fffde8 0%, #fff8d0 100%);
+}
+
+/* レインボー */
+.tpl-rainbow .cert-bg {
+  background:
+    linear-gradient(90deg, rgba(255,100,100,0.08) 0%, rgba(255,200,50,0.08) 20%, rgba(100,200,100,0.08) 40%, rgba(50,150,255,0.08) 60%, rgba(150,100,255,0.08) 80%, rgba(255,100,200,0.08) 100%),
+    linear-gradient(135deg, #fff8f0 0%, #f0fff0 50%, #f0f8ff 100%);
+}
+
+/* ひまわり */
+.tpl-flower .cert-bg {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255,200,50,0.2) 0%, transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,200,50,0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 20%, rgba(100,180,50,0.1) 0%, transparent 30%),
+    linear-gradient(135deg, #fffff0 0%, #f5ffe0 100%);
+}
+
+/* ビジネス */
+.tpl-business .cert-bg {
+  background:
+    linear-gradient(90deg, rgba(50,80,120,0.03) 0%, transparent 50%, rgba(50,80,120,0.03) 100%),
+    linear-gradient(135deg, #f5f7fa 0%, #e8ecf0 100%);
+}
+
+/* フォーマル */
+.tpl-formal .cert-bg {
+  background:
+    linear-gradient(90deg, rgba(44,62,80,0.02) 0%, transparent 50%, rgba(44,62,80,0.02) 100%),
+    linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* キッズ */
+.tpl-kids .cert-bg {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,150,200,0.2) 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(150,200,255,0.2) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(255,200,100,0.15) 0%, transparent 40%),
+    linear-gradient(135deg, #fff5fa 0%, #f0f5ff 50%, #f5fff0 100%);
+}
+
+/* ゴールド豪華 */
+.tpl-gold .cert-bg {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,215,0,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(255,215,0,0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #fff8e0 0%, #f5e8c8 50%, #fff0d0 100%);
+}
+
+/* ===== 用紙サイズ別アスペクト比（プレビュー） ===== */
+.paper-a4-portrait .certificate {
+  aspect-ratio: 1 / 1.414;
+}
+.paper-a4-landscape .certificate {
+  aspect-ratio: 1.414 / 1;
+}
+.paper-a3-portrait .certificate {
+  aspect-ratio: 1 / 1.414;
+  max-width: 560px;
+}
+.paper-a3-landscape .certificate {
+  aspect-ratio: 1.414 / 1;
+  max-width: 560px;
+}
+.paper-b5-portrait .certificate {
+  aspect-ratio: 1 / 1.412;
+  max-width: 400px;
+}
+.paper-postcard .certificate {
+  aspect-ratio: 1 / 1.48;
+  max-width: 300px;
+}
+.paper-square .certificate {
+  aspect-ratio: 1 / 1;
+  max-width: 400px;
+}
+.paper-fit .certificate {
+  aspect-ratio: 1 / 1.414;
+}
+
+/* ===== 横書き ===== */
+.layout-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  gap: 6px;
+}
+
+.cert-title {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: #4a3728;
+  margin-bottom: 8px;
+  font-family: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", "MS Mincho", serif;
+}
+
+.cert-recipient {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #c0392b;
+  margin: 4px 0;
+  letter-spacing: 3px;
+}
+
+.cert-award-label {
+  font-size: 0.9rem;
+  color: #8b6f50;
+  letter-spacing: 2px;
+}
+
+.cert-award-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #b88a6a;
+  letter-spacing: 3px;
+  padding: 4px 16px;
+  border-bottom: 2px solid #e8d5c0;
+  display: inline-block;
+}
+
+.cert-reason {
+  font-size: 0.8rem;
+  color: #6b5a4a;
+  line-height: 1.5;
+  max-width: 88%;
+  margin: 4px 0;
+}
+
+.cert-date {
+  font-size: 0.8rem;
+  color: #8b6f50;
+  margin-top: 4px;
+}
+
+.cert-issuer {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cert-issuer-title {
+  font-size: 0.8rem;
+  color: #8b6f50;
+}
+
+.cert-issuer-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a3728;
+  letter-spacing: 2px;
+}
+
+.cert-stamp {
+  font-size: 1.6rem;
+  color: #c0392b;
+  opacity: 0.7;
+  margin-top: 4px;
+  transition: opacity 0.2s;
+}
+
+.cert-stamp.hidden {
+  opacity: 0;
+}
+
+/* ===== 縦書き ===== */
+.layout-vertical {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 5px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.vert-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #4a3728;
+  font-family: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", "MS Mincho", serif;
+  margin-bottom: 6px;
+}
+
+.vert-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.vert-recipient {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #c0392b;
+  letter-spacing: 3px;
+}
+
+.vert-text {
+  font-size: 0.9rem;
+  color: #8b6f50;
+  letter-spacing: 1px;
+}
+
+.vert-award-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #b88a6a;
+  letter-spacing: 2px;
+  padding: 0 6px;
+  border-right: 2px solid #e8d5c0;
+}
+
+.vert-reason {
+  font-size: 0.8rem;
+  color: #6b5a4a;
+  line-height: 1.5;
+  max-height: 28%;
+  margin: 4px 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.vert-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.vert-date {
+  font-size: 0.8rem;
+  color: #8b6f50;
+}
+
+.vert-issuer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.vert-issuer-title {
+  font-size: 0.8rem;
+  color: #8b6f50;
+}
+
+.vert-issuer-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4a3728;
+  letter-spacing: 1px;
+}
+
+.vert-stamp {
+  font-size: 1.4rem;
+  color: #c0392b;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.vert-stamp.hidden {
+  opacity: 0;
+}
+
+/* ===== 印刷用 ===== */
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+  }
+
+  header,
+  .form-section,
+  .preview-toolbar {
+    display: none !important;
+  }
+
+  .preview-section {
+    box-shadow: none;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
+  .certificate-wrapper {
+    min-height: 0;
+  }
+
+  .certificate {
+    max-width: 100%;
+    padding: 0;
+    aspect-ratio: auto;
+    height: 100vh;
+  }
+
+  .cert-bg {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .cert-border {
+    border-radius: 0;
+  }
+
+  .cert-title {
+    font-size: 2rem;
+  }
+  .cert-recipient {
+    font-size: 1.6rem;
+  }
+  .cert-award-title {
+    font-size: 1.4rem;
+  }
+  .vert-title {
+    font-size: 1.8rem;
+  }
+  .vert-recipient {
+    font-size: 1.4rem;
+  }
+  .vert-award-title {
+    font-size: 1.2rem;
+  }
+
+  @page {
+    margin: 15mm;
+    size: A4 portrait;
+  }
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 860px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+  .certificate {
+    max-width: 400px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 10px;
+  }
+  header h1 {
+    font-size: 1.4rem;
+  }
+  .form-section,
+  .preview-section {
+    padding: 14px;
+  }
+  .cert-title {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+  .cert-recipient {
+    font-size: 1.2rem;
+  }
+  .cert-award-title {
+    font-size: 1.1rem;
+  }
+  .vert-title {
+    font-size: 1.4rem;
+  }
+  .vert-recipient {
+    font-size: 1.1rem;
+  }
+  .vert-award-title {
+    font-size: 1rem;
+  }
+  .certificate {
+    max-width: 100%;
+    padding: 8px;
+  }
+  .certificate-wrapper {
+    min-height: 360px;
+  }
+}

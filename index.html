@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表彰状メーカー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>表彰状メーカー</h1>
+      <p>かんたんに表彰状を作って印刷・保存</p>
+    </header>
+
+    <div class="main-layout">
+      <!-- 入力フォーム -->
+      <div class="form-section">
+        <h2>内容を入力</h2>
+        <form id="certForm">
+          <div class="form-group">
+            <label for="recipientName">お名前</label>
+            <input type="text" id="recipientName" value="山田 太郎" placeholder="例：山田 太郎">
+          </div>
+
+          <div class="form-group">
+            <label for="awardTitle">賞の名前</label>
+            <input type="text" id="awardTitle" value="優秀社員賞" list="awardSuggestions" placeholder="例：優秀社員賞">
+            <datalist id="awardSuggestions">
+              <option value="優秀社員賞">
+              <option value="永年勤続表彰">
+              <option value="皆勤賞">
+              <option value="精勤賞">
+              <option value="努力賞">
+              <option value="特別功労賞">
+              <option value="年間MVP">
+              <option value="ベストセールス賞">
+              <option value="リーダーシップ賞">
+              <option value="チームワーク賞">
+              <option value="安全運転賞">
+              <option value="無事故表彰">
+              <option value="業務改善賞">
+              <option value="お客様満足賞">
+              <option value="新人賞">
+              <option value="ベストサポート賞">
+              <option value="貢献賞">
+              <option value="功績賞">
+              <option value="技能賞">
+              <option value="感謝状">
+              <option value="がんばり賞">
+              <option value="よくできました賞">
+              <option value="たいへんよくできました">
+              <option value="たすかりました賞">
+              <option value="ありがとう賞">
+              <option value="運動会 一等賞">
+              <option value="お手伝い名人賞">
+              <option value="なかよし賞">
+              <option value="はなまる賞">
+              <option value="読書賞">
+              <option value="あいさつ名人賞">
+              <option value="そうじ名人賞">
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="reason">メッセージ（表彰理由）</label>
+            <textarea id="reason" rows="2" placeholder="例：いつも元気に挨拶ができるすてきなおともだち">年間を通じて顕著な業績を挙げ 会社の発展に多大な貢献をされました よってその功績を称え ここに表彰します</textarea>
+          </div>
+
+          <!-- テンプレートⅡ（賞＋メッセージ＋発行者＋肩書きを一括設定） -->
+          <div class="form-group">
+            <label>📋 テンプレートⅡ</label>
+            <div class="template-sets" id="templateSets">
+              <div class="tpl-group-label">🏢 ビジネス</div>
+              <span class="tpl-set" data-award="優秀社員賞" data-msg="年間を通じて顕著な業績を挙げ会社の発展に多大な貢献をされました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">優秀社員</span>
+              <span class="tpl-set" data-award="永年勤続表彰" data-msg="多年にわたり職務に精励し当社の発展に大きく貢献されました よってその功績をたたえここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">永年勤続</span>
+              <span class="tpl-set" data-award="皆勤賞" data-msg="あなたは当年度において一日も休むことなく業務に精励されました よってその努力をたたえここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="人事部長">皆勤</span>
+              <span class="tpl-set" data-award="努力賞" data-msg="たゆまぬ努力と向上心をもって業務に取り組み他の模範となる成果を挙げられました よってその努力を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">努力賞</span>
+              <span class="tpl-set" data-award="リーダーシップ賞" data-msg="卓越したリーダーシップを発揮しチームを牽引して目標達成に大きく貢献されました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">リーダー</span>
+              <span class="tpl-set" data-award="安全運転賞" data-msg="日頃から安全運転を心がけ無事故無違反を達成し他の模範となりました よってこれを賞しここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="安全衛生委員長">安全運転</span>
+              <span class="tpl-set" data-award="感謝状" data-msg="あなたは日頃の献身的な協力をもって当社の発展に大きく貢献されました そのご厚情に対し深く感謝の意を表します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">感謝状</span>
+              <span class="tpl-set" data-award="年間MVP" data-msg="年間を通じて最も顕著な成果を上げ会社の成長に大きく寄与されました よってその栄誉を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">MVP</span>
+              <span class="tpl-set" data-award="業務改善賞" data-msg="業務プロセスの改善に尽力し効率化と品質向上に大きく貢献されました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">業務改善</span>
+              <span class="tpl-set" data-award="お客様満足賞" data-msg="顧客対応において卓越したサービスを提供しお客様から高い評価を得られました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">顧客満足</span>
+              <span class="tpl-set" data-award="新人賞" data-msg="新人ながら常に意欲的に業務に取り組み著しい成長を見せました よってその前途を祝してここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">新人賞</span>
+              <span class="tpl-set" data-award="チームワーク賞" data-msg="優れたチームワークを発揮し職場の活性化と目標達成に大きく貢献しました よってその功績を称えここに表彰します" data-issuer="株式会社サンプル" data-issuer-title="代表取締役社長">チーム</span>
+
+              <div class="tpl-group-label">🌸 子ども・学校</div>
+              <span class="tpl-set tpl-set-child" data-award="がんばり賞" data-msg="いつも明るく元気に頑張りました その姿はみんなのお手本です これからも応援しています" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">がんばり</span>
+              <span class="tpl-set tpl-set-child" data-award="よくできました賞" data-msg="最後まであきらめずに取り組みすばらしい成果を出しました その努力をたたえこの賞を贈ります" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">よくできた</span>
+              <span class="tpl-set tpl-set-child" data-award="お手伝い名人賞" data-msg="いつも進んでお手伝いをしてくれてありがとう みんながとても助かりました よってここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">お手伝い</span>
+              <span class="tpl-set tpl-set-child" data-award="運動会 一等賞" data-msg="運動会において最後まで力を出しきりみごとな成績をおさめました その栄誉をたたえここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">運動会</span>
+              <span class="tpl-set tpl-set-child" data-award="なかよし賞" data-msg="いつもお友だちにやさしくみんなと仲良くすることができました その優しい心をたたえこの賞を贈ります" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">なかよし</span>
+              <span class="tpl-set tpl-set-child" data-award="読書賞" data-msg="あなたはたくさんの本を読み豊かな知識と心を育みました よってその努力をたたえここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">読書</span>
+              <span class="tpl-set tpl-set-child" data-award="あいさつ名人賞" data-msg="いつも元気なあいさつでみんなを明るい気持ちにしてくれました その素晴らしい姿勢をたたえここに賞します" data-issuer="学校法人 〇〇幼稚園" data-issuer-title="園長">あいさつ</span>
+              <span class="tpl-set tpl-set-child" data-award="そうじ名人賞" data-msg="いつも学校をすみずみまできれいにし みんなが気持ちよく過ごせる環境を作ってくれました よってここに賞します" data-issuer="〇〇小学校" data-issuer-title="校長">そうじ</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="issuerName">発行者</label>
+            <input type="text" id="issuerName" value="株式会社サンプル" placeholder="例：株式会社サンプル">
+          </div>
+
+          <div class="form-group">
+            <label for="issuerTitle">発行者の肩書き</label>
+            <input type="text" id="issuerTitle" value="代表取締役社長" placeholder="例：代表取締役社長">
+          </div>
+
+          <div class="form-group">
+            <label for="date">日付</label>
+            <input type="date" id="date">
+          </div>
+
+          <fieldset class="form-fieldset">
+            <legend>デザイン</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="orientation">📄 向き</label>
+                <select id="orientation">
+                  <option value="horizontal">横書き</option>
+                  <option value="vertical">縦書き</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="borderStyle">🎨 枠</label>
+                <select id="borderStyle">
+                  <option value="classic">クラシック</option>
+                  <option value="golden">ゴールド</option>
+                  <option value="modern">モダン</option>
+                  <option value="elegant">エレガント</option>
+                  <option value="formal">フォーマル</option>
+                  <option value="cute">キュート</option>
+                  <option value="nature">ネイチャー</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="templateBg">🖼️ テンプレート</label>
+              <select id="templateBg">
+                <option value="none">なし（枠のみ）</option>
+                <option value="sakura">🌸 さくら（春・入園・入学）</option>
+                <option value="sports">🏅 スポーツ（運動会・体育）</option>
+                <option value="star">⭐ スター（輝く才能）</option>
+                <option value="rainbow">🌈 レインボー（子ども向け）</option>
+                <option value="flower">🌻 ひまわり（夏・元気）</option>
+                <option value="business">💼 ビジネス（会社・シンプル）</option>
+                <option value="formal">📜 フォーマル（公式・厳格）</option>
+                <option value="kids">🧸 キッズ（かわいい）</option>
+                <option value="gold">👑 ゴールド（豪華）</option>
+              </select>
+            </div>
+            <div class="form-group stamp-control">
+              <label>
+                <input type="checkbox" id="showStamp" checked>
+                <span>印鑑を表示する</span>
+              </label>
+              <div class="stamp-selector">
+                <label for="stampType" class="sr-only">印鑑の種類</label>
+                <select id="stampType" title="印鑑の種類を選択">
+                  <option value="㊞">㊞ 実印</option>
+                  <option value="㊧">㊧ 認印</option>
+                  <option value="★">★ スター</option>
+                  <option value="◎">◎ 二重丸</option>
+                  <option value="❤">❤ ハート</option>
+                  <option value="♪">♪ 音符</option>
+                  <option value="🐾">🐾 どうぶつ足あと</option>
+                  <option value="⭐">⭐ キラキラ</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="button" id="printBtn" class="btn btn-primary">🖨️ 印刷</button>
+            <button type="button" id="resetBtn" class="btn btn-secondary">リセット</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- プレビュー -->
+      <div class="preview-section">
+        <div class="preview-toolbar">
+          <h2>プレビュー</h2>
+          <span class="paper-size-label" id="paperSizeLabel">A4 縦</span>
+        </div>
+        <div class="certificate-wrapper" id="certificateWrapper">
+          <div class="certificate" id="certificate">
+            <div class="cert-bg" id="certBg"></div>
+            <div class="cert-border" id="certBorder">
+              <div class="cert-inner" id="certInner">
+                <!-- 横書き -->
+                <div class="layout-horizontal" id="layoutHorizontal">
+                  <div class="cert-title">表彰状</div>
+                  <div class="cert-recipient" id="certRecipient">山田 太郎</div>
+                  <div class="cert-award-label">あなたは</div>
+                  <div class="cert-award-title" id="certAwardTitle">優秀社員賞</div>
+                  <div class="cert-award-label">に選ばれました</div>
+                  <div class="cert-reason" id="certReason">年間を通じて卓越した業績を挙げ、会社の発展に多大な貢献をした</div>
+                  <div class="cert-date" id="certDate"></div>
+                  <div class="cert-issuer">
+                    <div class="cert-issuer-title" id="certIssuerTitle">代表取締役社長</div>
+                    <div class="cert-issuer-name" id="certIssuerName">株式会社サンプル</div>
+                    <div class="cert-stamp" id="certStamp">㊞</div>
+                  </div>
+                </div>
+
+                <!-- 縦書き -->
+                <div class="layout-vertical" id="layoutVertical">
+                  <div class="vert-title">表彰状</div>
+                  <div class="vert-body">
+                    <div class="vert-recipient" id="vertRecipient">山田 太郎</div>
+                    <div class="vert-text">あなたは</div>
+                    <div class="vert-award-title" id="vertAwardTitle">優秀社員賞</div>
+                    <div class="vert-text">に選ばれました</div>
+                  </div>
+                  <div class="vert-reason" id="vertReason">年間を通じて卓越した業績を挙げ、会社の発展に多大な貢献をした</div>
+                  <div class="vert-footer">
+                    <div class="vert-date" id="vertDate"></div>
+                    <div class="vert-issuer">
+                      <div class="vert-issuer-title" id="vertIssuerTitle">代表取締役社長</div>
+                      <div class="vert-issuer-name" id="vertIssuerName">株式会社サンプル</div>
+                      <div class="vert-stamp" id="vertStamp">㊞</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
